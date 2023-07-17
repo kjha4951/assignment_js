@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 setinterval</title>
+</head>
+<body>
+    <button id="stop"> click here</button>
+    <script>
+        let i=0
+        let intervalid=setInterval(() => {
+        console.log(i++) 
+        }, 1000);
+       
+
+        let stop=document.getElementById("stop")
+        function stopnumber() {
+            clearInterval(intervalid);
+            
+            document.getElementById("stop").disabled = true;
+        }
+        stop.addEventListener("click", stopnumber);
+
+    </script>
+</body>
+</html>

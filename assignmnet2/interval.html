@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving the Box</title>
+    <style>
+        #test {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(38, 57, 91);
+            margin-bottom: 100px;
+            margin-top: 100px;
+        }
+        #gif {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <img id="gif" src="run.gif" alt="Animated GIF">
+    <img id="test" src="ghost.gif" alt="Animated Ghost">
+    <button id="startButton">Start Animation</button>
+    <button id="stopButton" disabled>Stop Animation</button>
+
+    <script>
+        var a = 0;
+        var target = document.getElementById("test");
+        var gif = document.getElementById("gif");
+        var intervalId;
+
+        function startAnimation() {
+            intervalId = setInterval(interval, 1000);
+            document.getElementById("startButton").disabled = true;
+            document.getElementById("stopButton").disabled = false;
+        }
+
+        function stopAnimation() {
+            clearInterval(intervalId);
+            document.getElementById("startButton").disabled = false;
+            document.getElementById("stopButton").disabled = true;
+        }
+
+        function interval() {
+            a = a + 10;
+            target.style.marginLeft = a + 'px';
+            gif.style.marginLeft = (a + 20) + 'px';
+        }
+
+        var startButton = document.getElementById("startButton");
+        startButton.addEventListener("click", startAnimation);
+
+        var stopButton = document.getElementById("stopButton");
+        stopButton.addEventListener("click", stopAnimation);
+    </script>
+</body>
+</html>
